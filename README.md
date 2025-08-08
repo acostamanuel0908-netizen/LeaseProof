@@ -1,2 +1,0 @@
-# LeaseProof
-Testing new app
