@@ -3,14 +3,14 @@ import 'package:signature/signature.dart';
 
 class SignaturePad extends StatefulWidget {
   final Function(Uint8List) onSaved;
-  SignaturePad({required this.onSaved});
+  const SignaturePad({required this.onSaved, Key? key}) : super(key: key);
 
   @override
-  _SignaturePadState createState() => _SignaturePadState();
+  State<SignaturePad> createState() => _SignaturePadState();
 }
 
 class _SignaturePadState extends State<SignaturePad> {
-  SignatureController _controller = SignatureController(penStrokeWidth: 2);
+  final SignatureController _controller = SignatureController(penStrokeWidth: 2);
 
   @override
   void dispose() {
@@ -23,25 +23,25 @@ class _SignaturePadState extends State<SignaturePad> {
     return Column(children: [
       Container(
         height: 150,
-        decoration: BoxDecoration(border: Border.all()),
+        decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
         child: Signature(controller: _controller),
       ),
       Row(
         children: [
           ElevatedButton(
             onPressed: () => _controller.clear(),
-            child: Text('Clear'),
+            child: const Text('Clear'),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           ElevatedButton(
             onPressed: () async {
               final data = await _controller.toPngBytes();
               if (data != null) widget.onSaved(data);
             },
-            child: Text('Save'),
-          )
+            child: const Text('Save'),
+          ),
         ],
-      )
+      ),
     ]);
   }
 }
