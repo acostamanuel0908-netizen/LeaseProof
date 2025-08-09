@@ -20,7 +20,7 @@ dependencies:
   googleapis_auth: ^1.2.0
   pdf: ^3.10.1
   printing: ^5.10.1
-  signature: ^4.2.0
+  signature: ^5.5.0
   intl: ^0.18.0
 
 dev_dependencies:
